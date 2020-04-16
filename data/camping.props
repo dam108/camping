@@ -1,0 +1,12 @@
+#Fichero de configuracion del Camping
+#Thu Apr 16 14:32:05 CEST 2020
+Precio\ de\ la\ electricidad=1.0
+Descuento\ tienda\ de\ Campa\u00F1a=0.1
+Dias\ necesarios\ para\ descuento\ en\ tienda\ de\ Campa\u00F1a=7
+Precio\ Caravana\ en\ Agosto=40.0
+Precio\ Caravana=30.0
+Precio\ Bungalow\ por\ persona=20.0
+Precio\ Bungalow\ por\ ni\u00F1o=0.0
+Precio\ tienda\ de\ Campa\u00F1a=20.0
+Minimo\ de\ dias\ para\ Caravana=10
+Recargo\ Bungalow=0.2
