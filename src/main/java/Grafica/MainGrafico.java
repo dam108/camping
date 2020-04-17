@@ -19,6 +19,10 @@ public class MainGrafico extends javax.swing.JFrame {
 
     public MainGrafico() {
         initComponents();
+        crearBotones();
+    }
+
+    public void crearBotones() {
 
         setLocationRelativeTo(null);  //ventana centrada en pantalla
         tablero = new JButton[Camping.parcelas.size()]; //definimos los 16 botones
@@ -55,7 +59,6 @@ public class MainGrafico extends javax.swing.JFrame {
             }
             Botonera.add(tablero[i]);
         }
-
     }
 
     private void FActionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,8 +178,10 @@ public class MainGrafico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Header = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         Botonera = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        Panel_Inferior = new javax.swing.JPanel();
         JB_Edit_Param = new javax.swing.JButton();
         JB_Update_Param = new javax.swing.JButton();
         JB_Ayuda = new javax.swing.JButton();
@@ -184,10 +189,25 @@ public class MainGrafico extends javax.swing.JFrame {
         JB_Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestión Camping");
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setMinimumSize(new java.awt.Dimension(800, 800));
-        setPreferredSize(new java.awt.Dimension(600, 800));
+        setMaximumSize(new java.awt.Dimension(800, 850));
+        setMinimumSize(new java.awt.Dimension(800, 850));
+        setPreferredSize(new java.awt.Dimension(800, 850));
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
+
+        Header.setBackground(new java.awt.Color(255, 255, 255));
+        Header.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.color1"));
+        Header.setMaximumSize(new java.awt.Dimension(800, 50));
+        Header.setMinimumSize(new java.awt.Dimension(800, 50));
+        Header.setPreferredSize(new java.awt.Dimension(800, 50));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(92, 94, 57));
+        jLabel1.setText("Camping De Betanzos");
+        Header.add(jLabel1);
+
+        getContentPane().add(Header, java.awt.BorderLayout.PAGE_START);
 
         Botonera.setBackground(new java.awt.Color(255, 255, 255));
         Botonera.setMinimumSize(new java.awt.Dimension(800, 750));
@@ -195,9 +215,9 @@ public class MainGrafico extends javax.swing.JFrame {
         Botonera.setLayout(new java.awt.GridLayout(10, 8));
         getContentPane().add(Botonera, java.awt.BorderLayout.CENTER);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setMinimumSize(new java.awt.Dimension(800, 50));
-        jPanel3.setPreferredSize(new java.awt.Dimension(800, 50));
+        Panel_Inferior.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Inferior.setMinimumSize(new java.awt.Dimension(800, 50));
+        Panel_Inferior.setPreferredSize(new java.awt.Dimension(800, 50));
 
         JB_Edit_Param.setText("Editar Parámetros");
         JB_Edit_Param.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +225,7 @@ public class MainGrafico extends javax.swing.JFrame {
                 JB_Edit_ParamActionPerformed(evt);
             }
         });
-        jPanel3.add(JB_Edit_Param);
+        Panel_Inferior.add(JB_Edit_Param);
 
         JB_Update_Param.setText("Actualizar Parámetros");
         JB_Update_Param.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +233,7 @@ public class MainGrafico extends javax.swing.JFrame {
                 JB_Update_ParamActionPerformed(evt);
             }
         });
-        jPanel3.add(JB_Update_Param);
+        Panel_Inferior.add(JB_Update_Param);
 
         JB_Ayuda.setText("Ayuda");
         JB_Ayuda.addActionListener(new java.awt.event.ActionListener() {
@@ -221,7 +241,7 @@ public class MainGrafico extends javax.swing.JFrame {
                 JB_AyudaActionPerformed(evt);
             }
         });
-        jPanel3.add(JB_Ayuda);
+        Panel_Inferior.add(JB_Ayuda);
 
         JB_About.setText("About");
         JB_About.addActionListener(new java.awt.event.ActionListener() {
@@ -229,12 +249,17 @@ public class MainGrafico extends javax.swing.JFrame {
                 JB_AboutActionPerformed(evt);
             }
         });
-        jPanel3.add(JB_About);
+        Panel_Inferior.add(JB_About);
 
         JB_Salir.setText("Salir");
-        jPanel3.add(JB_Salir);
+        JB_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_SalirActionPerformed(evt);
+            }
+        });
+        Panel_Inferior.add(JB_Salir);
 
-        getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(Panel_Inferior, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -277,6 +302,10 @@ public class MainGrafico extends javax.swing.JFrame {
                 + "Versión: 1.0\n"
                 + "Repositorio en GitHub: https://github.com/dam108/camping.git");
     }//GEN-LAST:event_JB_AboutActionPerformed
+
+    private void JB_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_JB_SalirActionPerformed
 
     public static void abrirFichero(String ruta) {
         Desktop ficheroAEjecutar = Desktop.getDesktop();
@@ -327,12 +356,14 @@ public class MainGrafico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Botonera;
+    private javax.swing.JPanel Header;
     private javax.swing.JButton JB_About;
     private javax.swing.JButton JB_Ayuda;
     private javax.swing.JButton JB_Edit_Param;
     private javax.swing.JButton JB_Salir;
     private javax.swing.JButton JB_Update_Param;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel Panel_Inferior;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
     public static Camping camp = new Camping();
 }
