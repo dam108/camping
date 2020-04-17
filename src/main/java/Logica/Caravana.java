@@ -6,35 +6,42 @@ import java.time.LocalDateTime;
 
 public class Caravana extends Parcela {
 
-    Caravana(int n){
+    Caravana(int n) {
         super(n);
     }
-    
+
     @Override
-    public double checkOut(Param p){
-       int mes = LocalDateTime.now().getMonthValue();
-       int dias = this.calcularDias();
-       double precioCaravana;
-       
-       if (dias <= p.getDiasMinimosCaravana()) {
-           return -1;
-       }
-       else {
-            if (mes == 8){
-               precioCaravana = p.getPrecioCaravanaAgosto();
-            }
-            else {
+    public boolean checkIn(String dni) {
+        this.ocupado = true;
+        this.dni = dni;
+        this.fechaEntrada = LocalDateTime.now();
+        Camping.guardarC();
+        return true;
+    }
+
+    @Override
+    public double checkOut(Param p) {
+        int mes = LocalDateTime.now().getMonthValue();
+        int dias = this.calcularDias();
+        double precioCaravana;
+
+        if (dias <= p.getDiasMinimosCaravana()) {
+            return -1;
+        } else {
+            if (mes == 8) {
+                precioCaravana = p.getPrecioCaravanaAgosto();
+            } else {
                 precioCaravana = p.getPrecioCaravana();
             }
             Ficheros.GuardarLineaFactura(dni, numero, "Caravana",
-                    this.fechaEntrada.toString(), LocalDateTime.now().toString(),
-                    (precioCaravana * dias));
+                    this.fechaEntrada.toString(),
+                    LocalDateTime.now().toString(),(precioCaravana * dias));
             super.desocuparParcela();
-            
+
             Camping.guardarC();
-            
+
             return precioCaravana * dias;
-       }
+        }
     }
 
 }

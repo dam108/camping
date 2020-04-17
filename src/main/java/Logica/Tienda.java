@@ -7,13 +7,19 @@ import java.time.LocalDateTime;
 public class Tienda extends Parcela {
     boolean electricidad;
     
+    /*CONSTRUCTOR*/
+    
     Tienda(int n){
         super(n);
         this.electricidad = false;
     }
-
-    public boolean checkIn(String dni, boolean el){
-        super.checkIn(dni);
+    
+    /*METODOS*/
+    
+    public boolean checkIn(String dniHuesped, boolean el){
+        this.ocupado = true;
+        this.dni = dniHuesped;
+        this.fechaEntrada = LocalDateTime.now();
         if (el) this.electricidad = true;
         else this.electricidad = false;
         Camping.guardarC();
@@ -28,10 +34,11 @@ public class Tienda extends Parcela {
         precioTienda = p.getPrecioTiendaCampaña();
         precioElectriciad = p.getPrecioElectricidad();
         
-        if(dias > 7 ) precioTienda -= (p.getDescuentoTiendaCampaña() * precioTienda) ;
+        if(dias > 7 ) precioTienda -= (p.getDescuentoTiendaCampaña()
+                * precioTienda) ;
 
         
-        if(this.electricidad){
+        if(electricidad == true){
 
             Ficheros.GuardarLineaFactura(dni, numero, "Tienda",
             this.fechaEntrada.toString(), LocalDateTime.now().toString(),
@@ -40,7 +47,6 @@ public class Tienda extends Parcela {
             this.desocuparParcela();
             
             Camping.guardarC();
-            
             return (precioTienda + precioElectriciad) * dias;
         }
         else {
@@ -51,7 +57,6 @@ public class Tienda extends Parcela {
             this.desocuparParcela();
             
             Camping.guardarC();            
-            
             return precioTienda * dias;
         }
     }

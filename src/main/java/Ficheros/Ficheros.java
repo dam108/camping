@@ -24,9 +24,10 @@ public class Ficheros {
             btw.write(tParcela);btw.write(";");
             btw.write(fE);btw.write(";");
             btw.write(fS);btw.write(";");
-            btw.write(String.valueOf(importe));
+            btw.write(String.valueOf(importe));btw.write(";");
+            btw.newLine();
         }
-        catch(IOException ex){System.err.printf("%nError: ",ex.getMessage());}
+        catch(IOException ex){System.err.printf("%nError1: ",ex.getMessage());}
         
     }
     
@@ -41,7 +42,8 @@ public class Ficheros {
             }
                 
         }
-        catch(IOException ex){System.err.printf("%nError1: %s",ex.getMessage());}
+        catch(IOException ex){System.err.printf("%nError2: %s",
+                ex.getMessage());}
     }
             
     
@@ -68,8 +70,10 @@ public class Ficheros {
             }
         }
         catch(EOFException e){eof = true; return arr;}
-        catch(ClassNotFoundException ex){System.err.printf("%nError2: %s",ex.getMessage());}
-        catch(IOException ex){System.err.printf("%nError3: %s",ex.getMessage());}
+        catch(ClassNotFoundException ex){System.err.printf("%nError3: %s",
+                ex.getMessage());}
+        catch(IOException ex){System.err.printf("%nError4: %s",
+                ex.getMessage());}
         return arr;
     }
 }

@@ -1,6 +1,7 @@
 package Logica;
 
 import Ficheros.Param;
+import Logica.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -28,13 +29,14 @@ public abstract class Parcela implements iAlquilable, Serializable {
     /*METODOS*/
     
     @Override
-    public boolean checkIn(String dniHuesped){
+    public boolean checkIn(String dniHuesped) {
         this.ocupado = true;
         this.dni = dniHuesped;
         this.fechaEntrada = LocalDateTime.now();
         Camping.guardarC();
         return true;
     }
+    
     
     public int calcularDias(){
         LocalDateTime fechaHoy = LocalDateTime.now();

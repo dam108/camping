@@ -26,15 +26,12 @@ public class Camping {
     public void inicializarParcelas(Param p){
         for (int i = 0; i < p.getParcelaTienda(); i++) {
             parcelas.add(new Tienda(i+1));
-            System.out.println(i+1);
         }
-        for (int i = p.getParcelaTienda(); i < p.getParcelaCaravana(); i++) {
-            parcelas.add(new Caravana(i+1));
-            System.out.println(i+1);
+        for (int i = 0; i < p.getParcelaCaravana(); i++) {
+            parcelas.add(new Caravana(i+11));
         }
-        for (int i = p.getParcelaCaravana(); i < p.getParcelaBungalow(); i++) {
-            parcelas.add(new Bungalow(i+1));
-            System.out.println(i+1);
+        for (int i = 0; i < p.getParcelaBungalow(); i++) {
+            parcelas.add(new Bungalow(i+31));
         }
     }
     

@@ -7,8 +7,8 @@ public class Param {
     private double precioTiendaCampaña, descuentoTiendaCampaña,
             precioElectricidad,precioCaravanaAgosto,precioCaravana,
             precioBungalow,precioNiñoBungalow,recargoBungalow;
-    private int diasParaDescuentoTiendaCampaña, diasMinimosCaravana,
-            parcelaTienda, parcelaCaravana, parcelaBungalow;
+    private int diasParaDescuentoTiendaCampaña, diasMinimosCaravana;
+    private final int parcelaTienda, parcelaCaravana, parcelaBungalow;
 
    
     /*CONSTRUCTOR*/
@@ -30,8 +30,10 @@ public class Param {
                             ("Precio tienda de Campaña"));
             this.descuentoTiendaCampaña = Double.valueOf(config.getProperty
                             ("Descuento tienda de Campaña"));
-            this.diasParaDescuentoTiendaCampaña = Integer.valueOf(config.getProperty
-                            ("Dias necesarios para descuento en tienda de Campaña"));
+            this.diasParaDescuentoTiendaCampaña = Integer.valueOf(
+                    config.getProperty
+                            ("Dias necesarios para descuento en tienda de"
+                                    + " Campaña"));
             this.precioElectricidad = Double.valueOf(config.getProperty
                             ("Precio de la electricidad"));
             this.precioCaravanaAgosto = Double.valueOf(config.getProperty
@@ -48,7 +50,8 @@ public class Param {
                             ("Minimo de dias para Caravana"));
 
         }
-        catch(FileNotFoundException e){System.out.println("No Existe el archivos");}
+        catch(FileNotFoundException e){System.out.println("No Existe el"
+                + " archivos");}
         catch(IOException ioe){ioe.printStackTrace();}
     }
     

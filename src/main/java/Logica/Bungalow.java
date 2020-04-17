@@ -5,43 +5,47 @@ import Ficheros.Param;
 import java.time.LocalDateTime;
 
 public class Bungalow extends Parcela {
+
     public int adultos;
-    
-    Bungalow(int n){
+
+    Bungalow(int n) {
         super(n);
     }
 
-    public boolean checkIn(String dni, int ad){
-       super.checkIn(dni);
-       this.adultos = ad;
-       Camping.guardarC();
-       return true;
+    public boolean checkIn(String dniHuesped, int ad) {
+        this.ocupado = true;
+        this.dni = dniHuesped;
+        this.fechaEntrada = LocalDateTime.now();
+        this.adultos = ad;
+        Camping.guardarC();
+        return true;
     }
-    
+
     @Override
-    public double checkOut(Param p){
+    public double checkOut(Param p) {
         int dias = this.calcularDias();
         double precioBung;
-        
-        if (dias <= 2){
+
+        if (dias <= 2) {
             precioBung = p.getPrecioBungalow();
             precioBung += (p.getPrecioBungalow() * p.getRecargoBungalow());
-        }
-        else {
+            System.out.println("precioBung"+precioBung);
+        } else {
             precioBung = p.getPrecioBungalow();
+            System.out.println("precioBung"+precioBung);
         }
-        
+
         Ficheros.GuardarLineaFactura(dni, numero, "Bungalow",
                 this.fechaEntrada.toString(), LocalDateTime.now().toString(),
                 (precioBung * dias * this.adultos));
-        
+        int adF = this.adultos;
         this.desocuparParcela();
         Camping.guardarC();
-        return precioBung * dias * this.adultos;
+        return (precioBung * dias * adF);
     }
-    
+
     @Override
-    public void desocuparParcela(){
+    public void desocuparParcela() {
         this.dni = null;
         this.ocupado = false;
         this.fechaEntrada = null;
